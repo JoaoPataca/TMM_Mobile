@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectScreenScreen">
             <connections>
+                <outlet property="AccountBtn" destination="OiE-FX-fkb" id="VZf-dh-DTm"/>
                 <outlet property="FrameList" destination="gG3-OW-c4Z" id="eoY-TU-Wut"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

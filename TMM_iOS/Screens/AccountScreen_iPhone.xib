@@ -21,6 +21,9 @@
                     <items>
                         <barButtonItem title="Log Out" width="135" style="plain" id="rth-3u-0EL">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="LogOutBtnPressed:" destination="-1" id="9OH-mN-jgd"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Add Service" width="166" style="plain" id="xKW-el-fOj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

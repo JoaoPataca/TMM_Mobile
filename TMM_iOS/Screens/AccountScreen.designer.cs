@@ -17,6 +17,9 @@ namespace TMM_iOS
 
 		[Action ("AddServiceBtnPressed:")]
 		partial void AddServiceBtnPressed (MonoTouch.Foundation.NSObject sender);
+
+		[Action ("LogOutBtnPressed:")]
+		partial void LogOutBtnPressed (MonoTouch.Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

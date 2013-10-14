@@ -71,6 +71,12 @@ namespace TMM_iOS
 			ServicesTable.ReloadData ();
 		}
 
+		partial void LogOutBtnPressed (NSObject sender)
+		{
+			TmmManager.Instance.LogOut();
+			NavigationController.PopViewControllerAnimated(true);
+		}
+
 		partial void AddServiceBtnPressed (NSObject sender)
 		{
 			this.NavigationController.PushViewController (new NewServiceSelector(), true);

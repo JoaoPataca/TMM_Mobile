@@ -13,6 +13,9 @@ namespace TMM_iOS
 	partial class SelectFrameScreen
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIBarButtonItem AccountBtn { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UITableView FrameList { get; set; }
 
 		[Action ("AccountBtnPressed:")]
@@ -23,6 +26,11 @@ namespace TMM_iOS
 			if (FrameList != null) {
 				FrameList.Dispose ();
 				FrameList = null;
+			}
+
+			if (AccountBtn != null) {
+				AccountBtn.Dispose ();
+				AccountBtn = null;
 			}
 		}
 	}

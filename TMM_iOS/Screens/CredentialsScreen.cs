@@ -60,7 +60,17 @@ namespace TMM_iOS
 			try
 			{
 				TmmManager.Instance.SignIn(UsernameField.Text, PasswordField.Text);
-				this.NavigationController.PushViewController (AccountScreen.Instance, true);
+				PopAndPushAccountView();
+			}
+			catch(InvalidUsernameException)
+			{
+				UIAlertView _error = new UIAlertView ("Invalid username", "The field \'Username\' cannot be left blank.", null, "Ok", null);
+				_error.Show ();
+			}
+			catch(InvalidPasswordException)
+			{
+				UIAlertView _error = new UIAlertView ("Invalid password", "The field \'Password\' cannot be left blank.", null, "Ok", null);
+				_error.Show ();
 			}
 			catch(UserAlreadyExistsException uaee)
 			{
@@ -75,7 +85,17 @@ namespace TMM_iOS
 			try
 			{
 				TmmManager.Instance.LogIn(UsernameField.Text, PasswordField.Text);
-				this.NavigationController.PushViewController (AccountScreen.Instance, true);
+				PopAndPushAccountView();
+			}
+			catch(InvalidUsernameException)
+			{
+				UIAlertView _error = new UIAlertView ("Invalid username", "The field \'Username\' cannot be left blank.", null, "Ok", null);
+				_error.Show ();
+			}
+			catch(InvalidPasswordException)
+			{
+				UIAlertView _error = new UIAlertView ("Invalid password", "The field \'Password\' cannot be left blank.", null, "Ok", null);
+				_error.Show ();
 			}
 			catch(UnknownUserException uue)
 			{
@@ -87,6 +107,19 @@ namespace TMM_iOS
 				UIAlertView _error = new UIAlertView ("Wrong password", "The password provided for the user \"" + wpe.Username + "\" is incorrect.", null, "Ok", null);
 				_error.Show ();
 			}
+		}
+
+		private void PopAndPushAccountView()
+		{
+			var viewControllers = NavigationController.ViewControllers;
+			var newViewControllers = new UIViewController[viewControllers.Length-1];
+			for(var i = 0; i < viewControllers.Length-1; i++)
+			{
+				newViewControllers[i] = viewControllers[i];
+			}
+			var navigationController = this.NavigationController;
+			this.NavigationController.ViewControllers = newViewControllers;
+			navigationController.PushViewController (AccountScreen.Instance, true);
 		}
 	}
 }

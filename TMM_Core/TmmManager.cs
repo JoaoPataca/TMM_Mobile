@@ -30,7 +30,7 @@ namespace TMM_Core
 
 		public TimeSpan FRAME_FETCH_INTERVAL;
 
-		public User CurrentUser;
+		public User CurrentUser { get; private set; }
 		public IDictionary<string, User> KnownUsers;
 
 		private IList<Frame> _reachableFrames;
@@ -51,6 +51,11 @@ namespace TMM_Core
 
 		public void SignIn(string username, string password)
 		{
+			if (username.Equals (""))
+				throw new InvalidUsernameException (username);
+			if (password.Equals (""))
+				throw new InvalidPasswordException (password);
+
 			if (!KnownUsers.ContainsKey (username)) 
 			{
 				KnownUsers [username] = new User (username, password);
@@ -64,6 +69,11 @@ namespace TMM_Core
 
 		public void LogIn(string username, string password)
 		{
+			if (username.Equals (""))
+				throw new InvalidUsernameException (username);
+			if (password.Equals (""))
+				throw new InvalidPasswordException (password);
+
 			if (KnownUsers.ContainsKey (username)) 
 			{
 				if (KnownUsers [username].Password.Equals (password)) 
@@ -78,6 +88,11 @@ namespace TMM_Core
 			{
 				throw new UnknownUserException (username);
 			}
+		}
+
+		public void LogOut()
+		{
+			CurrentUser = null;
 		}
 
 		public void FetchFrames()

@@ -44,6 +44,18 @@ namespace TMM_iOS
 			// Release any cached data, images, etc that aren't in use.
 		}
 
+		public override void ViewWillAppear (bool animated)
+		{
+			if(TmmManager.Instance.CurrentUser == null)
+			{
+				AccountBtn.Title = "Account";
+			}
+			else
+			{
+				AccountBtn.Title = "Logged in as: " + TmmManager.Instance.CurrentUser.Name;
+			}
+		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
