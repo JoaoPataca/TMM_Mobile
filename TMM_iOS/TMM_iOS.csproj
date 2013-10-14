@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A28A267D-0EA2-465C-A024-9E4D2CC4C898}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TMM_iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>TMM_iOS</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <ConsolePause>false</ConsolePause>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchDebug>true</MtouchDebug>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <BuildIpa>true</BuildIpa>
+    <ConsolePause>false</ConsolePause>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <ConsolePause>false</ConsolePause>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Screens\" />
+    <Folder Include="Overlays\" />
+    <Folder Include="TableSources\" />
+    <Folder Include="ServiceVisitors\" />
+    <Folder Include="Screens\Rss\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Overlays\LoadingOverlay.cs" />
+    <Compile Include="Screens\SelectFrameScreen.cs" />
+    <Compile Include="Screens\SelectFrameScreen.designer.cs">
+      <DependentUpon>SelectFrameScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FrameScreen.cs" />
+    <Compile Include="Screens\FrameScreen.designer.cs">
+      <DependentUpon>FrameScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\WebScreen.cs" />
+    <Compile Include="Screens\WebScreen.designer.cs">
+      <DependentUpon>WebScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network.cs" />
+    <Compile Include="Screens\AccountScreen.cs" />
+    <Compile Include="Screens\AccountScreen.designer.cs">
+      <DependentUpon>AccountScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\CredentialsScreen.cs" />
+    <Compile Include="Screens\CredentialsScreen.designer.cs">
+      <DependentUpon>CredentialsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableSources\FrameTableSource.cs" />
+    <Compile Include="TableSources\ServicesTableSource.cs" />
+    <Compile Include="Screens\NewServiceSelector.cs" />
+    <Compile Include="Screens\NewServiceSelector.designer.cs">
+      <DependentUpon>NewServiceSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceVisitors\EditServiceScreenSelector.cs" />
+    <Compile Include="Screens\Rss\EditRssScreen.cs" />
+    <Compile Include="Screens\Rss\EditRssScreen.designer.cs">
+      <DependentUpon>EditRssScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Rss\NewRssScreen.cs" />
+    <Compile Include="Screens\Rss\NewRssScreen.designer.cs">
+      <DependentUpon>NewRssScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Rss\ViewRssScreen.cs" />
+    <Compile Include="Screens\Rss\ViewRssScreen.designer.cs">
+      <DependentUpon>ViewRssScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceVisitors\ViewServiceScreenSelector.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\TMM_Core\TMM_Core.csproj">
+      <Project>{733FFF23-AC2D-410F-94C0-EF731C2E24AC}</Project>
+      <Name>TMM_Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Screens\SelectFrameScreen_iPad.xib">
+      <DependentUpon>SelectFrameScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\SelectFrameScreen_iPhone.xib">
+      <DependentUpon>SelectFrameScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\FrameScreen_iPhone.xib">
+      <DependentUpon>FrameScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\FrameScreen_iPad.xib">
+      <DependentUpon>FrameScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\WebScreen_iPhone.xib">
+      <DependentUpon>WebScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\WebScreen_iPad.xib">
+      <DependentUpon>WebScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\AccountScreen_iPad.xib">
+      <DependentUpon>AccountScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\AccountScreen_iPhone.xib">
+      <DependentUpon>AccountScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\CredentialsScreen_iPhone.xib">
+      <DependentUpon>CredentialsScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\CredentialsScreen_iPad.xib">
+      <DependentUpon>CredentialsScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\NewServiceSelector_iPhone.xib">
+      <DependentUpon>NewServiceSelector.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\NewServiceSelector_iPad.xib">
+      <DependentUpon>NewServiceSelector.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\Rss\EditRssScreen_iPad.xib">
+      <DependentUpon>EditRssScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\Rss\EditRssScreen_iPhone.xib">
+      <DependentUpon>EditRssScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\Rss\NewRssScreen_iPad.xib">
+      <DependentUpon>NewRssScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\Rss\NewRssScreen_iPhone.xib">
+      <DependentUpon>NewRssScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\Rss\ViewRssScreen_iPhone.xib">
+      <DependentUpon>ViewRssScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Screens\Rss\ViewRssScreen_iPad.xib">
+      <DependentUpon>ViewRssScreen.cs</DependentUpon>
+    </InterfaceDefinition>
+  </ItemGroup>
+</Project>
