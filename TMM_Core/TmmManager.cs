@@ -111,7 +111,7 @@ namespace TMM_Core
 
 			var frameList = new List<Frame> ();
 			frameList.Add (frame1);
-			frameList.Add (frame2);
+			//frameList.Add (frame2);
 
 			_reachableFrames = frameList;
 		}

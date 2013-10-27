@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -91,6 +92,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
+    <None Include="Web References\remote\TmmService.wsdl" />
+    <None Include="Web References\remote\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -137,14 +143,11 @@
       <DependentUpon>ViewRssScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceVisitors\ViewServiceScreenSelector.cs" />
+    <Compile Include="Web References\remote\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\TMM_Core\TMM_Core.csproj">
-      <Project>{733FFF23-AC2D-410F-94C0-EF731C2E24AC}</Project>
-      <Name>TMM_Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Screens\SelectFrameScreen_iPad.xib">
       <DependentUpon>SelectFrameScreen.cs</DependentUpon>
@@ -200,5 +203,21 @@
     <InterfaceDefinition Include="Screens\Rss\ViewRssScreen_iPad.xib">
       <DependentUpon>ViewRssScreen.cs</DependentUpon>
     </InterfaceDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:8080/TMM/services/TmmService?wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\remote</RelPath>
+      <UpdateFromURL>http://localhost:8080/TMM/services/TmmService?wsdl</UpdateFromURL>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMM_Core\TMM_Core.csproj">
+      <Project>{A562618C-6441-4AFE-969E-B816FC639303}</Project>
+      <Name>TMM_Core</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

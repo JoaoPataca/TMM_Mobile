@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{733FFF23-AC2D-410F-94C0-EF731C2E24AC}</ProjectGuid>
+    <ProjectGuid>{A562618C-6441-4AFE-969E-B816FC639303}</ProjectGuid>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>TMM_Core</RootNamespace>
     <AssemblyName>TMM_Core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,26 +35,21 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="Services\RssFeedService.cs" />
+    <Compile Include="ServicesVisitor.cs" />
     <Compile Include="TmmManager.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Exceptions\InvalidPasswordException.cs" />
+    <Compile Include="Exceptions\InvalidUsernameException.cs" />
     <Compile Include="Exceptions\UnknownUserException.cs" />
     <Compile Include="Exceptions\UserAlreadyExistsException.cs" />
     <Compile Include="Exceptions\WrongPasswordException.cs" />
-    <Compile Include="ServicesVisitor.cs" />
-    <Compile Include="Exceptions\InvalidUsernameException.cs" />
-    <Compile Include="Exceptions\InvalidPasswordException.cs" />
+    <Compile Include="Services\RssFeedService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
 </Project>

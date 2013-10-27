@@ -3,12 +3,14 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using TMM_Core;
+using TMM_iOS.remote;
 
 namespace TMM_iOS
 {
 	public partial class CredentialsScreen : UIViewController
 	{
 		private static CredentialsScreen _instance;
+		private TmmService _tmm;
 
 		public static CredentialsScreen Instance
 		{
@@ -30,6 +32,7 @@ namespace TMM_iOS
 			: base (UserInterfaceIdiomIsPhone ? "CredentialsScreen_iPhone" : "CredentialsScreen_iPad", null)
 		{
 			Title = "Account";
+			_tmm = new TmmService ();
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -59,8 +62,9 @@ namespace TMM_iOS
 		{
 			try
 			{
-				TmmManager.Instance.SignIn(UsernameField.Text, PasswordField.Text);
-				PopAndPushAccountView();
+				var user = _tmm.signIn(UsernameField.Text, PasswordField.Text, "100.100.100.1");
+				//TmmManager.Instance.SignIn(UsernameField.Text, PasswordField.Text);
+				//PopAndPushAccountView();
 			}
 			catch(InvalidUsernameException)
 			{
