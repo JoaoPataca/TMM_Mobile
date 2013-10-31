@@ -44,6 +44,9 @@
     <MtouchDebug>true</MtouchDebug>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -205,6 +208,12 @@
     </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TMM_Core\TMM_Core.csproj">
+      <Project>{A562618C-6441-4AFE-969E-B816FC639303}</Project>
+      <Name>TMM_Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WebReferences Include="Web References" />
   </ItemGroup>
   <ItemGroup>
@@ -215,9 +224,18 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TMM_Core\TMM_Core.csproj">
-      <Project>{A562618C-6441-4AFE-969E-B816FC639303}</Project>
-      <Name>TMM_Core</Name>
-    </ProjectReference>
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>

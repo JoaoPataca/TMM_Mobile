@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace TMM_Core
 {
-	public class UserAlreadyExistsException : Exception
+	public class UserAlreadyExistsExceptionCore : Exception
 	{
 		public string Username{ get; private set;}
 
-		public UserAlreadyExistsException(string username)
+		public UserAlreadyExistsExceptionCore(string username)
 		{
 			Username = username;
 		}

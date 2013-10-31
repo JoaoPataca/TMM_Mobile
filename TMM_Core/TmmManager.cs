@@ -63,7 +63,7 @@ namespace TMM_Core
 			} 
 			else 
 			{
-				throw new UserAlreadyExistsException (username);
+				throw new UserAlreadyExistsExceptionCore (username);
 			}
 		}
 

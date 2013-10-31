@@ -47,9 +47,9 @@
     <Compile Include="Exceptions\InvalidPasswordException.cs" />
     <Compile Include="Exceptions\InvalidUsernameException.cs" />
     <Compile Include="Exceptions\UnknownUserException.cs" />
-    <Compile Include="Exceptions\UserAlreadyExistsException.cs" />
     <Compile Include="Exceptions\WrongPasswordException.cs" />
     <Compile Include="Services\RssFeedService.cs" />
+    <Compile Include="Exceptions\UserAlreadyExistsExceptionCore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

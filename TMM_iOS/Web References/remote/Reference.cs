@@ -78,7 +78,7 @@ namespace TMM_iOS.remote {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://entities.data.tmm/xsd")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://entities.tmm/xsd")]
     public partial class User {
         
         /// <remarks/>
