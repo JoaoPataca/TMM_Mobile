@@ -95,11 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
-    <None Include="Web References\remote\TmmService.wsdl" />
-    <None Include="Web References\remote\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -117,7 +112,6 @@
     <Compile Include="Screens\WebScreen.designer.cs">
       <DependentUpon>WebScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Network.cs" />
     <Compile Include="Screens\AccountScreen.cs" />
     <Compile Include="Screens\AccountScreen.designer.cs">
       <DependentUpon>AccountScreen.cs</DependentUpon>
@@ -146,9 +140,6 @@
       <DependentUpon>ViewRssScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceVisitors\ViewServiceScreenSelector.cs" />
-    <Compile Include="Web References\remote\Reference.cs">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -208,22 +199,6 @@
     </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TMM_Core\TMM_Core.csproj">
-      <Project>{A562618C-6441-4AFE-969E-B816FC639303}</Project>
-      <Name>TMM_Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:8080/TMM/services/TmmService?wsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\remote</RelPath>
-      <UpdateFromURL>http://localhost:8080/TMM/services/TmmService?wsdl</UpdateFromURL>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\Icon-76.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
     <BundleResource Include="Resources\Icon-Small.png" />
@@ -237,5 +212,11 @@
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMM.Core.iOS.Linked\TMM.Core.iOS.Linked.csproj">
+      <Project>{44353F5D-EB42-40B9-A600-341194B02F7F}</Project>
+      <Name>TMM.Core.iOS.Linked</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

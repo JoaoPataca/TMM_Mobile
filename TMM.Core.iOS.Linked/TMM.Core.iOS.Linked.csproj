@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{44353F5D-EB42-40B9-A600-341194B02F7F}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TMM.Core.iOS.Linked</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>TMM.Core.iOS.Linked</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+    <Reference Include="System.Web.Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Core\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="..\TMM.Core.Android.Source\Core\Frame.cs">
+      <Link>Core\Frame.cs</Link>
+    </Compile>
+    <Compile Include="..\TMM.Core.Android.Source\Core\Item.cs">
+      <Link>Core\Item.cs</Link>
+    </Compile>
+    <Compile Include="..\TMM.Core.Android.Source\Core\TmmManager.cs">
+      <Link>Core\TmmManager.cs</Link>
+    </Compile>
+    <Compile Include="..\TMM.Core.Android.Source\Core\Exceptions\InvalidPasswordException.cs">
+      <Link>Core\Exceptions\InvalidPasswordException.cs</Link>
+    </Compile>
+    <Compile Include="..\TMM.Core.Android.Source\Core\Exceptions\InvalidUsernameException.cs">
+      <Link>Core\Exceptions\InvalidUsernameException.cs</Link>
+    </Compile>
+    <Compile Include="..\TMM.Core.Android.Source\Core\Network.cs">
+      <Link>Core\Network.cs</Link>
+    </Compile>
+    <Compile Include="Web References\TMM.Central\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMM.Core.Android.Source\TMM.Core.Android.Source.csproj">
+      <Project>{99641909-C59E-4E20-8550-D065037233C6}</Project>
+      <Name>TMM.Core.Android.Source</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:8080/TMM/services/TmmService?wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TMM.Central</RelPath>
+      <UpdateFromURL>http://localhost:8080/TMM/services/TmmService?wsdl</UpdateFromURL>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\TMM.Central\TmmService.wsdl" />
+    <None Include="Web References\TMM.Central\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+</Project>

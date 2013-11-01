@@ -1,10 +1,11 @@
 using System;
 using MonoTouch.UIKit;
 using TMM_Core;
+using TMM.Core.iOS.Linked.TMM.Central;
 
 namespace TMM_iOS
 {
-	public class EditServiceScreenSelector : ServicesVisitor
+	public class EditServiceScreenSelector
 	{
 		private static EditServiceScreenSelector _instance;
 		public static EditServiceScreenSelector Instance
@@ -27,13 +28,7 @@ namespace TMM_iOS
 
 		public UIViewController GetEditScreenFor(Service service)
 		{
-			service.Accept (this);
-			return _editScreen;
-		}
-
-		public void Visit(RssFeedService service)
-		{
-			_editScreen = EditRssScreen.GetInstance (service);
+			return EditRssScreen.GetInstance (service);
 		}
 	}
 }

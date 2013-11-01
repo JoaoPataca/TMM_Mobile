@@ -3,7 +3,6 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using TMM_Core;
-using TMM_iOS.remote;
 using System.Web.Services.Protocols;
 
 namespace TMM_iOS
@@ -11,7 +10,6 @@ namespace TMM_iOS
 	public partial class CredentialsScreen : UIViewController
 	{
 		private static CredentialsScreen _instance;
-		//private TmmService _tmm;
 
 		public static CredentialsScreen Instance
 		{
@@ -33,7 +31,6 @@ namespace TMM_iOS
 			: base (UserInterfaceIdiomIsPhone ? "CredentialsScreen_iPhone" : "CredentialsScreen_iPad", null)
 		{
 			Title = "Account";
-			//_tmm = new TmmService ();
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -63,29 +60,22 @@ namespace TMM_iOS
 		{
 			try
 			{
-				//var user = _tmm.signIn(UsernameField.Text, PasswordField.Text, "100.100.100.1");
 				TmmManager.Instance.SignIn(UsernameField.Text, PasswordField.Text);
 				PopAndPushAccountView();
 			}
 			catch(SoapException se)
 			{
-				UIAlertView _error = new UIAlertView ("", se.Message, null, "Ok", null);
+				UIAlertView _error = new UIAlertView ("", se.Message, null, "OK", null);
 				_error.Show ();
 			}
 			catch(InvalidUsernameException)
 			{
-				UIAlertView _error = new UIAlertView ("Invalid username", "The field \'Username\' cannot be left blank.", null, "Ok", null);
+				UIAlertView _error = new UIAlertView ("Invalid username", "The field \'Username\' cannot be left blank.", null, "OK", null);
 				_error.Show ();
 			}
 			catch(InvalidPasswordException)
 			{
-				UIAlertView _error = new UIAlertView ("Invalid password", "The field \'Password\' cannot be left blank.", null, "Ok", null);
-				_error.Show ();
-			}
-			catch(UserAlreadyExistsExceptionCore uaeec)
-			{
-				UIAlertView _error = new UIAlertView ("User already exists", "A user with the name \"" + uaeec.Username + "\" already exists. " +
-					"Please choose a different username.", null, "Ok", null);
+				UIAlertView _error = new UIAlertView ("Invalid password", "The field \'Password\' cannot be left blank.", null, "OK", null);
 				_error.Show ();
 			}
 		}
@@ -97,24 +87,19 @@ namespace TMM_iOS
 				TmmManager.Instance.LogIn(UsernameField.Text, PasswordField.Text);
 				PopAndPushAccountView();
 			}
+			catch(SoapException se)
+			{
+				UIAlertView _error = new UIAlertView ("", se.Message, null, "OK", null);
+				_error.Show ();
+			}
 			catch(InvalidUsernameException)
 			{
-				UIAlertView _error = new UIAlertView ("Invalid username", "The field \'Username\' cannot be left blank.", null, "Ok", null);
+				UIAlertView _error = new UIAlertView ("Invalid username", "The field \'Username\' cannot be left blank.", null, "OK", null);
 				_error.Show ();
 			}
 			catch(InvalidPasswordException)
 			{
-				UIAlertView _error = new UIAlertView ("Invalid password", "The field \'Password\' cannot be left blank.", null, "Ok", null);
-				_error.Show ();
-			}
-			catch(UnknownUserException uue)
-			{
-				UIAlertView _error = new UIAlertView ("Unknown user", "There is no user with the name \"" + uue.Username + "\".", null, "Ok", null);
-				_error.Show ();
-			}
-			catch(WrongPasswordException wpe)
-			{
-				UIAlertView _error = new UIAlertView ("Wrong password", "The password provided for the user \"" + wpe.Username + "\" is incorrect.", null, "Ok", null);
+				UIAlertView _error = new UIAlertView ("Invalid password", "The field \'Password\' cannot be left blank.", null, "OK", null);
 				_error.Show ();
 			}
 		}

@@ -52,7 +52,7 @@ namespace TMM_iOS
 			}
 			else
 			{
-				AccountBtn.Title = "Logged in as: " + TmmManager.Instance.CurrentUser.Name;
+				AccountBtn.Title = "Logged in as: " + TmmManager.Instance.CurrentUser.name;
 			}
 		}
 

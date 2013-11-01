@@ -3,6 +3,7 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using TMM_Core;
+using TMM.Core.iOS.Linked.TMM.Central;
 
 namespace TMM_iOS
 {
@@ -10,7 +11,7 @@ namespace TMM_iOS
 	{
 		private static EditRssScreen _instance;
 
-		public static EditRssScreen GetInstance(RssFeedService service)
+		public static EditRssScreen GetInstance(Service service)
 		{
 			if (_instance == null) 
 			{
@@ -23,7 +24,7 @@ namespace TMM_iOS
 			return _instance;
 		}
 
-		private RssFeedService Service
+		private Service Service
 		{
 			get
 			{
@@ -35,13 +36,13 @@ namespace TMM_iOS
 				RefreshScreen ();
 			}
 		}
-		private RssFeedService _service;
+		private Service _service;
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
 
-		private EditRssScreen (RssFeedService service)
+		private EditRssScreen (Service service)
 			: base (UserInterfaceIdiomIsPhone ? "EditRssScreen_iPhone" : "EditRssScreen_iPad", null)
 		{
 			_service = service;
@@ -74,19 +75,19 @@ namespace TMM_iOS
 
 		private void RefreshScreen()
 		{
-			NameField.Text = Service.Name;
-			UrlField.Text = Service.Url;
+			NameField.Text = Service.name;
+			UrlField.Text = Service.url;
 		}
 
 		partial void CancelBtnPressed (NSObject sender)
 		{
-			UIAlertView _error = new UIAlertView ("Remove service", "Are you sure you want to remove the service \"" + _service.Name + "\"?", 
+			UIAlertView _error = new UIAlertView ("Remove service", "Are you sure you want to remove the service \"" + _service.name + "\"?", 
 			                                      null, "No", new string[]{"Yes"});
 			_error.Show ();
 			_error.Clicked += (object clickedSender, UIButtonEventArgs e) => {
 				if(e.ButtonIndex != 0)
 				{
-					TmmManager.Instance.CurrentUser.Services.Remove(Service);
+					TmmManager.Instance.RemoveService(Service);
 					NavigationController.PopViewControllerAnimated(true);
 				}
 			};
@@ -94,8 +95,9 @@ namespace TMM_iOS
 
 		partial void DoneBtnPressed (NSObject sender)
 		{
-			_service.Name = NameField.Text;
-			_service.Url = UrlField.Text;
+			_service.name = NameField.Text;
+			_service.url = UrlField.Text;
+			TmmManager.Instance.UpdateService(_service);
 			NavigationController.PopViewControllerAnimated(true);
 		}
 	}

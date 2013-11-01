@@ -4,6 +4,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using TMM_Core;
 using System.Collections.Generic;
+using TMM.Core.iOS.Linked.TMM.Central;
 
 namespace TMM_iOS
 {
@@ -58,16 +59,21 @@ namespace TMM_iOS
 			var reachableFrames = TmmManager.Instance.ReachableFrames;
 			var servicesList = new List<IList<Service>> ();
 			var sectionTitles = new string[1 + reachableFrames.Count];
-			servicesList.Add (TmmManager.Instance.CurrentUser.Services);
-			sectionTitles [0] = "My Services";
+			var userServices = TmmManager.Instance.GetServicesForCurrentUser ();
+			var startingTitleIndex = 0;
+			if (userServices.Count > 0) {
+				servicesList.Add (userServices);
+				sectionTitles [0] = "My Services";
+				startingTitleIndex++;
+			}
 
 			for (var i = 0; i < reachableFrames.Count; i++) 
 			{
 				servicesList.Add (reachableFrames [i].Services);
-				sectionTitles [i + 1] = reachableFrames [i].Name + " Services";
+				sectionTitles [i + startingTitleIndex] = reachableFrames [i].Name + " Services";
 			}
 
-			ServicesTable.Source = new ServicesTableSource (servicesList, sectionTitles, this.NavigationController);
+			ServicesTable.Source = new ServicesTableSource (servicesList, sectionTitles, this.NavigationController, startingTitleIndex == 1);
 			ServicesTable.ReloadData ();
 		}
 

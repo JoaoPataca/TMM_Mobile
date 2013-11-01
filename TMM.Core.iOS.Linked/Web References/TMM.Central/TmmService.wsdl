@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s0="http://webservice.tmm" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://webservice.tmm" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax23="http://exceptions.tmm/xsd" xmlns:ax21="http://entities.tmm/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webservice.tmm" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+  <types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.tmm">
+      <xs:import namespace="http://entities.tmm/xsd" />
+      <xs:import namespace="http://exceptions.tmm/xsd" />
+      <xs:element name="updateService">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="ax21:Service" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TmmServiceUserAlreadyExistsException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="UserAlreadyExistsException" nillable="true" type="ax23:UserAlreadyExistsException" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="signIn">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="publicIp" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="signInResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax21:User" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="removeService">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="ax21:Service" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TmmServiceUnknownUserException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="UnknownUserException" nillable="true" type="ax23:UnknownUserException" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TmmServiceWrongPasswordException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="WrongPasswordException" nillable="true" type="ax23:WrongPasswordException" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="logIn">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="publicIp" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="logInResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax21:User" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUsersFor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="publicIp" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUsersForResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax21:User" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getServicesFor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getServicesForResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax21:Service" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFramesFor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="publicIp" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFramesForResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax21:Frame" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="frameActivated">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="publicIp" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="frameActivatedResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax21:Frame" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addService">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="service" nillable="true" type="ax21:Service" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exceptions.tmm/xsd">
+      <xs:complexType name="UserAlreadyExistsException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UnknownUserException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="WrongPasswordException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://entities.tmm/xsd">
+      <xs:complexType name="Service">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="owner" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+          <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="User">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="publicIp" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Frame">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="frameId" type="xs:int" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="publicIp" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="signInRequest">
+    <part name="parameters" element="ns:signIn" />
+  </message>
+  <message name="signInResponse">
+    <part name="parameters" element="ns:signInResponse" />
+  </message>
+  <message name="TmmServiceUserAlreadyExistsException">
+    <part name="parameters" element="ns:TmmServiceUserAlreadyExistsException" />
+  </message>
+  <message name="removeServiceRequest">
+    <part name="parameters" element="ns:removeService" />
+  </message>
+  <message name="logInRequest">
+    <part name="parameters" element="ns:logIn" />
+  </message>
+  <message name="logInResponse">
+    <part name="parameters" element="ns:logInResponse" />
+  </message>
+  <message name="TmmServiceUnknownUserException">
+    <part name="parameters" element="ns:TmmServiceUnknownUserException" />
+  </message>
+  <message name="TmmServiceWrongPasswordException">
+    <part name="parameters" element="ns:TmmServiceWrongPasswordException" />
+  </message>
+  <message name="addServiceRequest">
+    <part name="parameters" element="ns:addService" />
+  </message>
+  <message name="updateServiceRequest">
+    <part name="parameters" element="ns:updateService" />
+  </message>
+  <message name="getFramesForRequest">
+    <part name="parameters" element="ns:getFramesFor" />
+  </message>
+  <message name="getFramesForResponse">
+    <part name="parameters" element="ns:getFramesForResponse" />
+  </message>
+  <message name="frameActivatedRequest">
+    <part name="parameters" element="ns:frameActivated" />
+  </message>
+  <message name="frameActivatedResponse">
+    <part name="parameters" element="ns:frameActivatedResponse" />
+  </message>
+  <message name="getUsersForRequest">
+    <part name="parameters" element="ns:getUsersFor" />
+  </message>
+  <message name="getUsersForResponse">
+    <part name="parameters" element="ns:getUsersForResponse" />
+  </message>
+  <message name="getServicesForRequest">
+    <part name="parameters" element="ns:getServicesFor" />
+  </message>
+  <message name="getServicesForResponse">
+    <part name="parameters" element="ns:getServicesForResponse" />
+  </message>
+  <portType name="TmmServicePortType">
+    <operation name="signIn">
+      <fault wsaw:Action="urn:signInTmmServiceUserAlreadyExistsException" name="TmmServiceUserAlreadyExistsException" message="ns:TmmServiceUserAlreadyExistsException" />
+      <input wsaw:Action="urn:signIn" message="ns:signInRequest" />
+      <output wsaw:Action="urn:signInResponse" message="ns:signInResponse" />
+    </operation>
+    <operation name="removeService">
+      <input wsaw:Action="urn:removeService" message="ns:removeServiceRequest" />
+    </operation>
+    <operation name="logIn">
+      <fault wsaw:Action="urn:logInTmmServiceUnknownUserException" name="TmmServiceUnknownUserException" message="ns:TmmServiceUnknownUserException" />
+      <fault wsaw:Action="urn:logInTmmServiceWrongPasswordException" name="TmmServiceWrongPasswordException" message="ns:TmmServiceWrongPasswordException" />
+      <input wsaw:Action="urn:logIn" message="ns:logInRequest" />
+      <output wsaw:Action="urn:logInResponse" message="ns:logInResponse" />
+    </operation>
+    <operation name="addService">
+      <input wsaw:Action="urn:addService" message="ns:addServiceRequest" />
+    </operation>
+    <operation name="updateService">
+      <input wsaw:Action="urn:updateService" message="ns:updateServiceRequest" />
+    </operation>
+    <operation name="getFramesFor">
+      <input wsaw:Action="urn:getFramesFor" message="ns:getFramesForRequest" />
+      <output wsaw:Action="urn:getFramesForResponse" message="ns:getFramesForResponse" />
+    </operation>
+    <operation name="frameActivated">
+      <input wsaw:Action="urn:frameActivated" message="ns:frameActivatedRequest" />
+      <output wsaw:Action="urn:frameActivatedResponse" message="ns:frameActivatedResponse" />
+    </operation>
+    <operation name="getUsersFor">
+      <input wsaw:Action="urn:getUsersFor" message="ns:getUsersForRequest" />
+      <output wsaw:Action="urn:getUsersForResponse" message="ns:getUsersForResponse" />
+    </operation>
+    <operation name="getServicesFor">
+      <input wsaw:Action="urn:getServicesFor" message="ns:getServicesForRequest" />
+      <output wsaw:Action="urn:getServicesForResponse" message="ns:getServicesForResponse" />
+    </operation>
+  </portType>
+  <binding name="TmmServiceSoap11Binding" type="ns:TmmServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="signIn">
+      <soap:operation soapAction="urn:signIn" style="document" />
+      <fault name="TmmServiceUserAlreadyExistsException">
+        <soap:fault namespace="" use="literal" name="TmmServiceUserAlreadyExistsException" />
+      </fault>
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="removeService">
+      <soap:operation soapAction="urn:removeService" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+    </operation>
+    <operation name="logIn">
+      <soap:operation soapAction="urn:logIn" style="document" />
+      <fault name="TmmServiceWrongPasswordException">
+        <soap:fault namespace="" use="literal" name="TmmServiceWrongPasswordException" />
+      </fault>
+      <fault name="TmmServiceUnknownUserException">
+        <soap:fault namespace="" use="literal" name="TmmServiceUnknownUserException" />
+      </fault>
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addService">
+      <soap:operation soapAction="urn:addService" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+    </operation>
+    <operation name="updateService">
+      <soap:operation soapAction="urn:updateService" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+    </operation>
+    <operation name="getFramesFor">
+      <soap:operation soapAction="urn:getFramesFor" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUsersFor">
+      <soap:operation soapAction="urn:getUsersFor" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="frameActivated">
+      <soap:operation soapAction="urn:frameActivated" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getServicesFor">
+      <soap:operation soapAction="urn:getServicesFor" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="TmmServiceSoap12Binding" type="ns:TmmServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="signIn">
+      <soap12:operation soapAction="urn:signIn" style="document" />
+      <fault name="TmmServiceUserAlreadyExistsException">
+        <soap12:fault namespace="" use="literal" name="TmmServiceUserAlreadyExistsException" />
+      </fault>
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="removeService">
+      <soap12:operation soapAction="urn:removeService" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+    </operation>
+    <operation name="logIn">
+      <soap12:operation soapAction="urn:logIn" style="document" />
+      <fault name="TmmServiceWrongPasswordException">
+        <soap12:fault namespace="" use="literal" name="TmmServiceWrongPasswordException" />
+      </fault>
+      <fault name="TmmServiceUnknownUserException">
+        <soap12:fault namespace="" use="literal" name="TmmServiceUnknownUserException" />
+      </fault>
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addService">
+      <soap12:operation soapAction="urn:addService" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+    </operation>
+    <operation name="updateService">
+      <soap12:operation soapAction="urn:updateService" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+    </operation>
+    <operation name="getFramesFor">
+      <soap12:operation soapAction="urn:getFramesFor" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUsersFor">
+      <soap12:operation soapAction="urn:getUsersFor" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="frameActivated">
+      <soap12:operation soapAction="urn:frameActivated" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getServicesFor">
+      <soap12:operation soapAction="urn:getServicesFor" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="TmmServiceHttpBinding" type="ns:TmmServicePortType">
+    <http:binding verb="POST" />
+    <operation name="signIn">
+      <http:operation location="signIn" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+      <output>
+        <mime:content part="parameters" type="application/xml" />
+      </output>
+    </operation>
+    <operation name="removeService">
+      <http:operation location="removeService" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+    </operation>
+    <operation name="logIn">
+      <http:operation location="logIn" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+      <output>
+        <mime:content part="parameters" type="application/xml" />
+      </output>
+    </operation>
+    <operation name="addService">
+      <http:operation location="addService" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+    </operation>
+    <operation name="updateService">
+      <http:operation location="updateService" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+    </operation>
+    <operation name="getFramesFor">
+      <http:operation location="getFramesFor" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+      <output>
+        <mime:content part="parameters" type="application/xml" />
+      </output>
+    </operation>
+    <operation name="getUsersFor">
+      <http:operation location="getUsersFor" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+      <output>
+        <mime:content part="parameters" type="application/xml" />
+      </output>
+    </operation>
+    <operation name="frameActivated">
+      <http:operation location="frameActivated" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+      <output>
+        <mime:content part="parameters" type="application/xml" />
+      </output>
+    </operation>
+    <operation name="getServicesFor">
+      <http:operation location="getServicesFor" />
+      <input>
+        <mime:content part="parameters" type="application/xml" />
+      </input>
+      <output>
+        <mime:content part="parameters" type="application/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="TmmService">
+    <port name="TmmServiceHttpSoap11Endpoint" binding="ns:TmmServiceSoap11Binding">
+      <soap:address location="http://localhost:8080/TMM/services/TmmService.TmmServiceHttpSoap11Endpoint/" />
+    </port>
+    <port name="TmmServiceHttpSoap12Endpoint" binding="ns:TmmServiceSoap12Binding">
+      <soap12:address location="http://localhost:8080/TMM/services/TmmService.TmmServiceHttpSoap12Endpoint/" />
+    </port>
+    <port name="TmmServiceHttpEndpoint" binding="ns:TmmServiceHttpBinding">
+      <http:address location="http://localhost:8080/TMM/services/TmmService.TmmServiceHttpEndpoint/" />
+    </port>
+  </service>
+</definitions>

@@ -1,6 +1,12 @@
 using System;
 using System.Collections.Generic;
 
+#if __ANDROID__
+using TMM.Core.Android.Source.TMM.Central;
+#elif __IOS__
+using TMM.Core.iOS.Linked.TMM.Central;
+#endif
+
 namespace TMM_Core
 {
 	public class Frame
@@ -10,7 +16,7 @@ namespace TMM_Core
 
 		public Item CurrentItem { get; private set;}
 
-		public IList<Service> Services { get; private set; }
+		public List<Service> Services { get; private set;}
 
 		public Frame (string name, string location)
 		{
@@ -32,7 +38,11 @@ namespace TMM_Core
 			CurrentItem = item;
 
 			Services = new List<Service> ();
-			Services.Add(new RssFeedService("Record","aaah pois"));
+			var sampleService = new Service ();
+			sampleService.owner = "an owner";
+			sampleService.name = "Record";
+			sampleService.url = "www.record.pt";
+			Services.Add(sampleService);
 		}
 	}
 }

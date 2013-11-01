@@ -42,7 +42,7 @@ namespace TMM_iOS
 
 		partial void AddBtnPressed (NSObject sender)
 		{
-			TmmManager.Instance.CurrentUser.Services.Add(new RssFeedService(NameField.Text, UrlField.Text));
+			TmmManager.Instance.AddService(NameField.Text, UrlField.Text);
 			NavigationController.PopToViewController(AccountScreen.Instance, true);
 		}
 	}

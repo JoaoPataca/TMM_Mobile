@@ -3,6 +3,7 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using TMM_Core;
+using TMM.Core.iOS.Linked.TMM.Central;
 
 namespace TMM_iOS
 {
@@ -10,7 +11,7 @@ namespace TMM_iOS
 	{
 		private static ViewRssScreen _instance;
 
-		public static ViewRssScreen GetInstance(RssFeedService service)
+		public static ViewRssScreen GetInstance(Service service)
 		{
 			if (_instance == null) 
 			{
@@ -23,7 +24,7 @@ namespace TMM_iOS
 			return _instance;
 		}
 
-		private RssFeedService Service
+		private Service Service
 		{
 			get
 			{
@@ -35,13 +36,13 @@ namespace TMM_iOS
 				RefreshScreen ();
 			}
 		}
-		private RssFeedService _service;
+		private Service _service;
 
 		static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
 
-		private ViewRssScreen (RssFeedService service)
+		private ViewRssScreen (Service service)
 			: base (UserInterfaceIdiomIsPhone ? "ViewRssScreen_iPhone" : "ViewRssScreen_iPad", null)
 		{
 			_service = service;
@@ -64,13 +65,13 @@ namespace TMM_iOS
 
 		private void RefreshScreen()
 		{
-			NameLabel.Text = Service.Name;
-			UrlLabel.Text = Service.Url;
+			NameLabel.Text = Service.name;
+			UrlLabel.Text = Service.url;
 		}
 
 		partial void AddBtnPressed (NSObject sender)
 		{
-			TmmManager.Instance.CurrentUser.Services.Add(_service);
+			TmmManager.Instance.AddService(Service.name, Service.url);
 			NavigationController.PopViewControllerAnimated(true);
 		}
 	}
